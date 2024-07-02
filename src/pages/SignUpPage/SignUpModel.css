@@ -1,0 +1,35 @@
+.roles {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  padding: 10px;
+}
+
+
+.soft-button {
+  font-family: sans-serif;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(
+    145deg,
+    #ffffff,
+    #e6e6e6
+  );
+  box-shadow: 5px 3px 10px #cccccc, -5px -5px 10px #ffffff;
+  font-size: 16px;
+  color: #333333;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.soft-button:hover {
+  background: linear-gradient(145deg, #e6e6e6, #ffffff); 
+  
+  box-shadow: 5px 5px 10px #bbbbbb, -5px -1px 10px #878585ef;
+}
+.soft-button.active {
+  box-shadow: inset 3px 3px 5px #cccccc, inset -3px -3px 5px #ffffff;
+}
+
+ 

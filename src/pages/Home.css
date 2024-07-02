@@ -1,0 +1,27 @@
+.slick-arrow-prev,
+.slick-arrow-next {
+  width: 50px;
+  height: 50px;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.slick-arrow-prev {
+  left: 20px;
+}
+
+.slick-arrow-next {
+  right: 20px;
+}
+
+.arrow-circle {
+  color: white;
+  font-size: 24px;
+}

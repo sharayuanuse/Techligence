@@ -1,0 +1,57 @@
+.student-signup-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* the gap between inputs */
+    padding: 20px;
+  }
+  
+  .soft-input {
+    padding: 10px 15px;
+    border-radius: 10px;
+    background: linear-gradient(145deg, #ffffff, #e6e6e6);
+    box-shadow: 5px 3px 10px #cccccc, -5px -5px 10px #ffffff;
+    font-size: 16px;
+    color: #333333;
+    outline: none;
+    transition: all 0.3s ease;
+  }
+  
+  .soft-input:focus {
+    box-shadow: inset 3px 3px 5px #cccccc, inset -3px -3px 5px #ffffff; /*These are the Inner shadow effect */
+  }
+  
+  .soft-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* the gap between checkbox and label */
+    font-size: 16px;
+    color: #333333;
+  }
+  
+  .soft-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(145deg, #ffffff, #e6e6e6); 
+    box-shadow: 5px 3px 10px #cccccc, -5px -5px 10px #ffffff;
+    font-size: 16px;
+    color: #333333;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .soft-button:hover {
+    box-shadow: 5px 5px 10px #bbbbbb, -5px -1px 10px #878585ef;
+  }
+  
+  .soft-button:active {
+    box-shadow: inset 3px 3px 5px #cccccc, inset -3px -3px 5px #ffffff;
+  }
+
+  .student-signup-form .error {
+    color: red;
+    text-align: center;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+  }
+  
