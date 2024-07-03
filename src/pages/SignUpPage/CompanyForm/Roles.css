@@ -48,7 +48,7 @@
     box-shadow: inset 3px 3px 5px #cccccc, inset -3px -3px 5px #ffffff;
   }
 
-  .employee-signup-form,.manager-signup-form .error {
+  .employee-signup-form .error,.manager-signup-form .error {
     color: red;
     text-align: center;
     margin-top: 0.5rem;

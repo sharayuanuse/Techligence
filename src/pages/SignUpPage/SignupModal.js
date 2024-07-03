@@ -8,9 +8,10 @@ import TeacherSignup from "./InstituteForm/TeacherForm";
 import AdminSignup from "./InstituteForm/AdminForm";
 import EmployeeSignup from "./CompanyForm/Employee";
 import ManagerSignup from "./CompanyForm/Manager";
-import VCRoleSelection from "./RoleSelection/VCRoleSelection"
+import VCRoleSelection from "./RoleSelection/VCRoleSelection";
 import UserSignup from "./VC/User";
-import CompanyRoleSelection from "./RoleSelection/CompanyRoleSelection"
+import CompanyRoleSelection from "./RoleSelection/CompanyRoleSelection";
+import LoginForm from "./LoginForm";
 
 const SignupModal = ({ isOpen, onClose }) => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -25,11 +26,13 @@ const SignupModal = ({ isOpen, onClose }) => {
     if (index !== activeIndex) {
       setActiveIndex(index);
       setSubRole(null); // Reset sub-role when changing main role
+      setLoginRequested(false); // Reset login request when changing main role
     }
   };
 
   const handleBackClick = () => {
     setSubRole(null);
+    setLoginRequested(false); // Reset login request when going back
   };
 
   if (!isOpen) return null;
@@ -81,46 +84,50 @@ const SignupModal = ({ isOpen, onClose }) => {
               style={{position:'absolute', padding:'0'}}
               title="Back"
             >
-              <img src={backButton} draggable="false"/>
+              <img src={backButton} draggable="false" />
             </button>
           )}
-          {activeIndex === 0 && !subRole && (
-            <InstituteRoleSelection setSubRole={setSubRole} />
-          )}
-          {activeIndex === 0 && subRole === "Student" && <StudentSignup />}
-          {activeIndex === 0 && subRole === "Teacher" && <TeacherSignup />}
-          {activeIndex === 0 && subRole === "Admin" && <AdminSignup />}
-          {/* Add other forms for other sub-roles*/}
+          
+          {!loginRequested ? (
+            <>
+              {activeIndex === 0 && !subRole && (
+                <InstituteRoleSelection setSubRole={setSubRole} />
+              )}
+              {activeIndex === 0 && subRole === "Student" && <StudentSignup />}
+              {activeIndex === 0 && subRole === "Teacher" && <TeacherSignup />}
+              {activeIndex === 0 && subRole === "Admin" && <AdminSignup />}
+              {/* Add other forms for other sub-roles*/}
 
-          {activeIndex === 1 && !subRole && (
-            <CompanyRoleSelection setSubRole={setSubRole} />
-          )}
-          {activeIndex === 1 && subRole === "Employee" && <EmployeeSignup />}
-          {activeIndex === 1 && subRole === "Manager" && <ManagerSignup />}
-          {activeIndex === 1 && subRole === "Admin" && <AdminSignup />}
+              {activeIndex === 1 && !subRole && (
+                <CompanyRoleSelection setSubRole={setSubRole} />
+              )}
+              {activeIndex === 1 && subRole === "Employee" && <EmployeeSignup />}
+              {activeIndex === 1 && subRole === "Manager" && <ManagerSignup />}
+              {activeIndex === 1 && subRole === "Admin" && <AdminSignup />}
 
-          {activeIndex === 2 && !subRole && (
-            <VCRoleSelection setSubRole={setSubRole} />
+              {activeIndex === 2 && !subRole && (
+                <VCRoleSelection setSubRole={setSubRole} />
+              )}
+              {activeIndex === 2 && subRole === "User" && <UserSignup />}
+              {activeIndex === 2 && subRole === "Admin" && <AdminSignup />}
+            </>
+          ) : (
+            <LoginForm />
           )}
-          {activeIndex === 2 && subRole === "User" && <UserSignup />}
-          {activeIndex === 2 && subRole === "Admin" && <AdminSignup />}
 
-
-          {subRole && (
-            <p
-              style={{
-                textAlign: "center",
-                marginTop: "1rem",
-                cursor: "pointer",
-              }}
-              onClick={toggleLogin}
-            >
-              {!loginRequested
-                ? "Already Have an Account? "
-                : "Don't Have an Account? "}
-              <u>{!loginRequested ? "Log In" : "Sign Up"}</u>
-            </p>
-          )}
+          <p
+            style={{
+              textAlign: "center",
+              marginTop: "1rem",
+              cursor: "pointer",
+            }}
+            onClick={toggleLogin}
+          >
+            {!loginRequested
+              ? "Already Have an Account? "
+              : "Don't Have an Account? "}
+            <u>{!loginRequested ? "Log In" : "Sign Up"}</u>
+          </p>
         </div>
         <div className="mb-4"></div>
       </div>

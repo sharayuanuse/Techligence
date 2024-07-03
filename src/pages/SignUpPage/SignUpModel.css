@@ -32,4 +32,20 @@
   box-shadow: inset 3px 3px 5px #cccccc, inset -3px -3px 5px #ffffff;
 }
 
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* the gap between inputs */
+  padding: 20px;
+  }
+
+
+  .login-form .error {
+  color: red;
+  text-align: center;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  }
+  
  
