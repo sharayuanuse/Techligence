@@ -6,6 +6,11 @@ import StudentSignup from "./InstituteForm/Student";
 import backButton from "./back-button.svg";
 import TeacherSignup from "./InstituteForm/TeacherForm";
 import AdminSignup from "./InstituteForm/AdminForm";
+import EmployeeSignup from "./CompanyForm/Employee";
+import ManagerSignup from "./CompanyForm/Manager";
+import VCRoleSelection from "./RoleSelection/VCRoleSelection"
+import UserSignup from "./VC/User";
+import CompanyRoleSelection from "./RoleSelection/CompanyRoleSelection"
 
 const SignupModal = ({ isOpen, onClose }) => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -86,6 +91,21 @@ const SignupModal = ({ isOpen, onClose }) => {
           {activeIndex === 0 && subRole === "Teacher" && <TeacherSignup />}
           {activeIndex === 0 && subRole === "Admin" && <AdminSignup />}
           {/* Add other forms for other sub-roles*/}
+
+          {activeIndex === 1 && !subRole && (
+            <CompanyRoleSelection setSubRole={setSubRole} />
+          )}
+          {activeIndex === 1 && subRole === "Employee" && <EmployeeSignup />}
+          {activeIndex === 1 && subRole === "Manager" && <ManagerSignup />}
+          {activeIndex === 1 && subRole === "Admin" && <AdminSignup />}
+
+          {activeIndex === 2 && !subRole && (
+            <VCRoleSelection setSubRole={setSubRole} />
+          )}
+          {activeIndex === 2 && subRole === "User" && <UserSignup />}
+          {activeIndex === 2 && subRole === "Admin" && <AdminSignup />}
+
+
           {subRole && (
             <p
               style={{
