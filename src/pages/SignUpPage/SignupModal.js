@@ -95,7 +95,7 @@ const SignupModal = ({ isOpen, onClose }) => {
               )}
               {activeIndex === 0 && subRole === "Student" && <StudentSignup />}
               {activeIndex === 0 && subRole === "Teacher" && <TeacherSignup />}
-              {activeIndex === 0 && subRole === "Admin" && <AdminSignup />}
+              {activeIndex === 0 && subRole === "Admin" && <AdminSignup organization={'institute'} />}
               {/* Add other forms for other sub-roles*/}
 
               {activeIndex === 1 && !subRole && (
@@ -103,13 +103,13 @@ const SignupModal = ({ isOpen, onClose }) => {
               )}
               {activeIndex === 1 && subRole === "Employee" && <EmployeeSignup />}
               {activeIndex === 1 && subRole === "Manager" && <ManagerSignup />}
-              {activeIndex === 1 && subRole === "Admin" && <AdminSignup />}
+              {activeIndex === 1 && subRole === "Admin" && <AdminSignup organization={'company'} />}
 
               {activeIndex === 2 && !subRole && (
                 <VCRoleSelection setSubRole={setSubRole} />
               )}
               {activeIndex === 2 && subRole === "User" && <UserSignup />}
-              {activeIndex === 2 && subRole === "Admin" && <AdminSignup />}
+              {activeIndex === 2 && subRole === "Admin" && <AdminSignup organization={'vc'} />}
             </>
           ) : (
             <LoginForm />

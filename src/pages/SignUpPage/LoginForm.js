@@ -1,10 +1,11 @@
 // src/components/Auth/LoginForm.js
 import React, { useState } from "react";
 import "./SignUpModel.css"
+import axios from 'axios'
 
 const LoginForm = () => {
   const [formData, setFormData] = useState({
-    username: "",
+    email: "",
     password: "",
     organization: "",
     role: "",
@@ -18,15 +19,22 @@ const LoginForm = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const { username, password, organization, role } = formData;
-    if (!username || !password || !organization || !role) {
+    const { email, password, organization, role } = formData;
+    if (!email || !password || !organization || !role) {
       alert("Please fill in all fields.");
       return;
     }
     console.log("Login form submitted:", formData);
     // Perform login logic here
+    try {
+      const res = await axios.post(`http://localhost:8000/api/${formData.organization.toLowerCase()}/login` , formData)
+      console.log(res.data.message);
+
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -38,9 +46,9 @@ const LoginForm = () => {
 
       <input
         type="text"
-        name="username"
-        placeholder="Username"
-        value={formData.username}
+        name="email"
+        placeholder="email"
+        value={formData.email}
         onChange={handleChange}
         required
         className="soft-input"

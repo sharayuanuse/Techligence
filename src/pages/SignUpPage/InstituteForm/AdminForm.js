@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import "./Student.css";
+import axios from "axios";
 
-const AdminSignup = () => {
+const AdminSignup = ({ organization }) => {
   const [formData, setFormData] = useState({
-    username: "",
     password: "",
     confirmPassword: "",
     email: "",
@@ -23,7 +23,7 @@ const AdminSignup = () => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (formData.password !== formData.confirmPassword) {
       setError("Passwords do not match.");
@@ -34,6 +34,13 @@ const AdminSignup = () => {
       return;
     }
     console.log("Form submitted:", formData);
+
+    try {
+      const res = await axios.post(`http://localhost:8000/api/${organization}/register` , {...formData , role: 'Admin'})
+      console.log(res.data.message);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -42,12 +49,11 @@ const AdminSignup = () => {
         <b>Admin Signup : </b>
       </p>
       <input
-        type="text"
-        name="username"
-        placeholder="Username"
-        value={formData.username}
+        type="email"
+        name="email"
+        placeholder="Email"
+        value={formData.email}
         onChange={handleChange}
-        required
         className="soft-input"
       />
       <input
@@ -69,14 +75,7 @@ const AdminSignup = () => {
         className="soft-input"
       />
       {error && <p className="error">{error}</p>}
-      <input
-        type="email"
-        name="email"
-        placeholder="Email (optional)"
-        value={formData.email}
-        onChange={handleChange}
-        className="soft-input"
-      />
+
       <label className="soft-checkbox">
         <input
           type="checkbox"

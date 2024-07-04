@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import "./Roles.css";
+import axios from "axios";
 
 const ManagerSignup = () => {
   const [formData, setFormData] = useState({
-    username: "",
     password: "",
     confirmPassword: "",
     email: "",
@@ -23,7 +23,7 @@ const ManagerSignup = () => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (formData.password !== formData.confirmPassword) {
       setError("Passwords do not match.");
@@ -34,6 +34,12 @@ const ManagerSignup = () => {
       return;
     }
     console.log("Form submitted:", formData);
+    try {
+      const res = await axios.post(`http://localhost:8000/api/company/register` , {...formData , role: 'Manager'})
+      console.log(res.data.message);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -42,12 +48,11 @@ const ManagerSignup = () => {
         <b>Manager Signup : </b>
       </p>
       <input
-        type="text"
-        name="username"
-        placeholder="Username"
-        value={formData.username}
+        type="email"
+        name="email"
+        placeholder="Email"
+        value={formData.email}
         onChange={handleChange}
-        required
         className="soft-input"
       />
       <input
@@ -69,14 +74,6 @@ const ManagerSignup = () => {
         className="soft-input"
       />
       {error && <p className="error">{error}</p>}
-      <input
-        type="email"
-        name="email"
-        placeholder="Email (optional)"
-        value={formData.email}
-        onChange={handleChange}
-        className="soft-input"
-      />
       <label className="soft-checkbox">
         <input
           type="checkbox"
