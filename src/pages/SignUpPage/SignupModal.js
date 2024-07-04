@@ -81,13 +81,13 @@ const SignupModal = ({ isOpen, onClose }) => {
             <button
               className="soft-button back-button"
               onClick={handleBackClick}
-              style={{position:'absolute', padding:'0'}}
+              style={{ position: "absolute", padding: "0" }}
               title="Back"
             >
               <img src={backButton} draggable="false" />
             </button>
           )}
-          
+
           {!loginRequested ? (
             <>
               {activeIndex === 0 && !subRole && (
@@ -101,7 +101,9 @@ const SignupModal = ({ isOpen, onClose }) => {
               {activeIndex === 1 && !subRole && (
                 <CompanyRoleSelection setSubRole={setSubRole} />
               )}
-              {activeIndex === 1 && subRole === "Employee" && <EmployeeSignup />}
+              {activeIndex === 1 && subRole === "Employee" && (
+                <EmployeeSignup />
+              )}
               {activeIndex === 1 && subRole === "Manager" && <ManagerSignup />}
               {activeIndex === 1 && subRole === "Admin" && <AdminSignup organization={'company'} />}
 
@@ -115,19 +117,21 @@ const SignupModal = ({ isOpen, onClose }) => {
             <LoginForm />
           )}
 
-          <p
-            style={{
-              textAlign: "center",
-              marginTop: "1rem",
-              cursor: "pointer",
-            }}
-            onClick={toggleLogin}
-          >
-            {!loginRequested
-              ? "Already Have an Account? "
-              : "Don't Have an Account? "}
-            <u>{!loginRequested ? "Log In" : "Sign Up"}</u>
-          </p>
+          {subRole && (
+            <p
+              style={{
+                textAlign: "center",
+                marginTop: "1rem",
+                cursor: "pointer",
+              }}
+              onClick={toggleLogin}
+            >
+              {!loginRequested
+                ? "Already Have an Account? "
+                : "Don't Have an Account? "}
+              <u>{!loginRequested ? "Log In" : "Sign Up"}</u>
+            </p>
+          )}
         </div>
         <div className="mb-4"></div>
       </div>
