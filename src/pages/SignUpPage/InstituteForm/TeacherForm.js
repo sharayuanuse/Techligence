@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "./Student.css";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { setUser } from "../../Redux/ReduxSlices";
 
 const TeacherSignup = () => {
   const [formData, setFormData] = useState({
@@ -9,6 +11,7 @@ const TeacherSignup = () => {
     email: "",
     termsAccepted: false,
   });
+  const dispatch = useDispatch();
 
   const [error, setError] = useState("");
 
@@ -38,6 +41,13 @@ const TeacherSignup = () => {
     try {
       const res = await axios.post(`http://localhost:8000/api/company/register` , {...formData , role: 'Teacher'})
       console.log(res.data.message);
+      // if (res.data.message === "success") {
+      //   dispatch(setUser({ ...res.data.user, role: 'Teacher' }));
+      // }
+      // if (res.status === 200) {
+        // console.log(res.data.message);
+        dispatch(setUser({ ...res.data.user, role: 'Teacher' }));
+      // }
     } catch (error) {
       console.log(error);
     }
