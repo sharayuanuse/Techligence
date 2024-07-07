@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Homepage from "./Homepage";
+import axios from "axios";
 
 // Dummy course data
 const dummyCourses = [
@@ -137,12 +138,25 @@ const dummyCourses = [
 ];
 
 const CourseCatalogPage = () => {
-  const [courses, setCourses] = useState(dummyCourses);
+  const [courses, setCourses] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedDifficulty, setSelectedDifficulty] = useState("");
   const [sortBy, setSortBy] = useState("");
   const [showFilters, setShowFilters] = useState(false);
+
+  useEffect(() => {
+    // Fetch courses from API or local storage
+    const fetchCourses = async () => {
+      try {
+        const res = await axios.get('http://localhost:8000/api/institute/courses/teacher')
+        setCourses(res.data.courses);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    fetchCourses();
+  } , [])
 
   // Filter courses based on search query, category, and difficulty
   const filteredCourses = courses.filter((course) => {
