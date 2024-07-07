@@ -1,0 +1,98 @@
+.admin-list-container {
+    /* max-width: 1200px;-button */
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .admin-dashboard-title {
+    text-align: center;
+    color: #003366; /* Dark blue */
+  }
+  
+  .admin-list-selection {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .category-buttons {
+    display: flex;
+  }
+  
+  .category-button {
+    background-color: #cce0ff; /* Light blue */
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    outline: none;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .category-button.active {
+    background-color: #004080; /* Dark blue */
+    color: white;
+  }
+  
+  .admin-list-search {
+    padding: 8px;
+    font-size: 16px;
+    width: 50%; /* Make the search bar wider */
+    text-align: center; /* Center the search bar */
+    border: 1px solid #969595; /* Light blue border */
+    border-radius: 4px;
+    background-color: #fff; /* Light blue background */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .admin-list-search:focus {
+    border-color: #004080; /* Dark blue border when focused */
+    box-shadow: 0 0 8px rgba(0, 64, 128, 0.2); /* Light blue shadow */
+  }
+  
+  .admin-list-table {
+    margin-top: 20px;
+  }
+  
+  .admin-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .admin-table-header {
+    background-color: #004080; /* Dark blue */
+    color: white;
+    padding: 8px;
+  }
+  
+  .admin-table-data {
+    text-align: left;
+    padding: 8px;
+  }
+  
+  .admin-table-data:nth-child(even) {
+    background-color: #e6f2ff; /* Very light blue */
+  }
+  
+  .admin-table-message {
+    text-align: center;
+    margin-top: 20px;
+    font-style: italic;
+  }
+  
+  .toggle-button {
+    /* background-color: #004080; */
+    color: black;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: background-color 0.3s ease;
+    align-self: flex-end; /* Align the button to the right */
+  }
+  
+  .toggle-button:hover {
+    background-color: #cce0ff; 
+  }
+  

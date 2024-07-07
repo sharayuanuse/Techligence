@@ -1,10 +1,11 @@
-// Header.js
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import ProfileIcon from "./avatar.png";
 import SignupModal from "../pages/SignUpPage/SignupModal";
+import { useUser } from "../context/UserContext"; // Adjust the path as necessary
 
 const Header = () => {
+  const { user } = useUser(); // Use the context to get user
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModal = () => setIsModalOpen(true);
@@ -28,11 +29,19 @@ const Header = () => {
                 Courses
               </Link>
               <Link
-                to="/Community"
+                to="/community"
                 className="text-white hover:text-gray-200 text-sm md:text-base"
               >
                 Community
               </Link>
+              {user && user.role === "Admin" && (
+                <Link
+                  to="/admin/list"
+                  className="text-white hover:text-gray-200 text-sm md:text-base"
+                >
+                  Dashboard
+                </Link>
+              )}
               <div className="flex items-center space-x-4">
                 {/* User Photo */}
                 <div

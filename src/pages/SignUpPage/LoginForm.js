@@ -1,7 +1,33 @@
-// src/components/Auth/LoginForm.js
 import React, { useState } from "react";
-import "./SignUpModel.css"
+import "./SignUpModel.css";
 import axios from 'axios'
+
+const organizationOptions = [
+  { value: "", label: "Select Organization" },
+  { value: "Institute", label: "Institute" },
+  { value: "Company", label: "Company" },
+  { value: "VC", label: "VC" },
+];
+
+const roleOptions = {
+  Institute: [
+    { value: "", label: "Select Role" },
+    { value: "Teacher", label: "Teacher" },
+    { value: "Student", label: "Student" },
+    { value: "Admin", label: "Admin" },
+  ],
+  Company: [
+    { value: "", label: "Select Role" },
+    { value: "Employee", label: "Employee" },
+    { value: "Manager", label: "Manager" },
+    { value: "Admin", label: "Admin" },
+  ],
+  VC: [
+    { value: "", label: "Select Role" },
+    { value: "User", label: "User" },
+    { value: "Admin", label: "Admin" },
+  ],
+};
 
 const LoginForm = () => {
   const [formData, setFormData] = useState({
@@ -37,17 +63,23 @@ const LoginForm = () => {
     }
   };
 
+  const getRoleOptions = () => {
+    if (!formData.organization) {
+      return [{ value: "", label: "Select Organization First" }];
+    }
+    return roleOptions[formData.organization];
+  };
+
   return (
     <form onSubmit={handleSubmit} className="login-form">
-      
       <p style={{ textAlign: "center" }}>
-        <b> Login </b>
+        <b>Login</b>
       </p>
 
       <input
         type="text"
         name="email"
-        placeholder="email"
+        placeholder="Email"
         value={formData.email}
         onChange={handleChange}
         required
@@ -62,24 +94,33 @@ const LoginForm = () => {
         required
         className="soft-input"
       />
-      <input
-        type="text"
+      <select
         name="organization"
-        placeholder="Organization"
         value={formData.organization}
         onChange={handleChange}
         required
         className="soft-input"
-      />
-      <input
-        type="text"
+      >
+        {organizationOptions.map((option) => (
+          <option key={option.value} value={option.value}>
+            {option.label}
+          </option>
+        ))}
+      </select>
+      <select
         name="role"
-        placeholder="Role"
         value={formData.role}
         onChange={handleChange}
         required
         className="soft-input"
-      />
+        disabled={!formData.organization}
+      >
+        {getRoleOptions().map((option) => (
+          <option key={option.value} value={option.value}>
+            {option.label}
+          </option>
+        ))}
+      </select>
 
       <div style={{ textAlign: "right", width: "100%" }}>
         <a href="#" className="forgot-password-link">
