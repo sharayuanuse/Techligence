@@ -1,6 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useState , useEffect } from "react";
+import addCoursesButton from "../add-courses-button.svg";
 import Homepage from "./Homepage";
 import axios from "axios";
+import AddCourseModal from "./AddCourses/AddCoursesModal.js";
+import { useSelector } from "react-redux";
+import { selectState } from "./Redux/ReduxSlices.js";
 
 // Dummy course data
 const dummyCourses = [
@@ -156,7 +160,23 @@ const CourseCatalogPage = () => {
       }
     }
     fetchCourses();
+    console.log('courses fetched');
   } , [])
+  // const [isAddCourseModalOpen, setIsAddCourseModalOpen] = useState(false);
+  const user = useSelector(selectState);
+  const [isAddCourseModalOpen, setIsAddCourseModalOpen] = useState(false);
+
+  const handleOpenModal = () => {
+    setIsAddCourseModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsAddCourseModalOpen(false);
+  };
+
+  const handleAddCourse = (newCourse) => {
+    setCourses((prevCourses) => [...prevCourses, newCourse]);
+  };
 
   // Filter courses based on search query, category, and difficulty
   const filteredCourses = courses.filter((course) => {
@@ -196,13 +216,30 @@ const CourseCatalogPage = () => {
 
           {/* Filter Options */}
           <div className="relative">
-            {/* Filter Button */}
-            <button
-              className="px-10 py-2.5 mb-4 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500 shadow-md transition-all duration-200"
-              onClick={() => setShowFilters(!showFilters)}
-            >
-              Filter
-            </button>
+            <div style={{ display: "flex" }}>
+              {/* Add Courses Button */}
+              {user && user.role.toLowerCase() === "teacher" && (
+                <button
+                  style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    textWrap: "nowrap",
+                  }}
+                  className="px-10 py-2.5 mb-4 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500 shadow-md transition-all duration-200"
+                  onClick={() => setIsAddCourseModalOpen(true)}
+                >
+                  <img src={addCoursesButton} />
+                  Add Courses
+                </button>
+              )}
+              {/* Filter Button */}
+              <button
+                className="px-10 py-2.5 mb-4 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500 shadow-md transition-all duration-200"
+                onClick={() => setShowFilters(!showFilters)}
+              >
+                Filter
+              </button>
+            </div>
 
             {/* Dropdown for Filter Options */}
             {showFilters && (
@@ -253,7 +290,7 @@ const CourseCatalogPage = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
           {sortedCourses.map((course) => (
             <div
-              key={course.id}
+              key={course._id}
               className="bg-white shadow-md rounded-md overflow-hidden transform transition-transform hover:scale-105"
             >
               <img
@@ -279,6 +316,11 @@ const CourseCatalogPage = () => {
           ))}
         </div>
       </div>
+      <AddCourseModal
+        isOpen={isAddCourseModalOpen}
+        onClose={() => setIsAddCourseModalOpen(false)}
+        handleAddCourse={handleAddCourse}
+      />
     </Homepage>
   );
 };

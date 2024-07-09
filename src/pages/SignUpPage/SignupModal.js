@@ -12,11 +12,14 @@ import VCRoleSelection from "./RoleSelection/VCRoleSelection";
 import UserSignup from "./VC/User";
 import CompanyRoleSelection from "./RoleSelection/CompanyRoleSelection";
 import LoginForm from "./LoginForm";
+import { useSelector } from "react-redux";
+import { selectState } from "../Redux/ReduxSlices";
 
 const SignupModal = ({ isOpen, onClose }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [loginRequested, setLoginRequested] = useState(false);
   const [subRole, setSubRole] = useState(null);
+  const user = useSelector(selectState)
 
   const toggleLogin = () => {
     setLoginRequested(!loginRequested);
@@ -36,6 +39,7 @@ const SignupModal = ({ isOpen, onClose }) => {
   };
 
   if (!isOpen) return null;
+  if(user) return null;
 
   return (
     <div
