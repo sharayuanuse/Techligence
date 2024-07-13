@@ -1,10 +1,12 @@
-import React, { useState , useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import addCoursesButton from "../add-courses-button.svg";
 import Homepage from "./Homepage";
 import axios from "axios";
 import AddCourseModal from "./AddCourses/AddCoursesModal.js";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectState } from "./Redux/ReduxSlices.js";
+import { Link } from "react-router-dom";
+import { selectCourseId, setCourseId } from "./Redux/CourseSlice.js";
 
 // Dummy course data
 const dummyCourses = [
@@ -153,18 +155,22 @@ const CourseCatalogPage = () => {
     // Fetch courses from API or local storage
     const fetchCourses = async () => {
       try {
-        const res = await axios.get('http://localhost:8000/api/institute/courses/teacher')
+        const res = await axios.get(
+          "http://localhost:8000/api/institute/courses/teacher"
+        );
         setCourses(res.data.courses);
       } catch (error) {
         console.log(error);
       }
-    }
+    };
     fetchCourses();
-    console.log('courses fetched');
-  } , [])
+    console.log("courses fetched");
+  }, []);
   // const [isAddCourseModalOpen, setIsAddCourseModalOpen] = useState(false);
   const user = useSelector(selectState);
   const [isAddCourseModalOpen, setIsAddCourseModalOpen] = useState(false);
+  const selectedCourseId = useSelector(selectCourseId);
+  const dispatch = useDispatch();
 
   const handleOpenModal = () => {
     setIsAddCourseModalOpen(true);
@@ -289,30 +295,35 @@ const CourseCatalogPage = () => {
         {/* Course Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
           {sortedCourses.map((course) => (
-            <div
-              key={course._id}
-              className="bg-white shadow-md rounded-md overflow-hidden transform transition-transform hover:scale-105"
-            >
-              <img
-                src={course.thumbnail}
-                alt={course.title}
-                className="w-full h-40 object-cover"
-              />
-              <div className="p-4">
-                <h2 className="text-lg font-semibold mb-2">{course.title}</h2>
-                <p className="text-sm text-gray-600 mb-4">
-                  {course.description}
-                </p>
-                <div className="flex justify-between items-center">
-                  <p className="text-sm text-gray-500">
-                    {course.category} | {course.difficulty}
+            // <Link to={`/CourseDetailPage/${course._id}`} key={course._id}>
+            <Link to={`/CourseDetailPage`} key={course._id}>
+              <div
+                className="bg-white shadow-md rounded-md overflow-hidden transform transition-transform hover:scale-105"
+                onClick={() => {
+                  dispatch(setCourseId(course._id));
+                }}
+              >
+                <img
+                  src={course.thumbnail}
+                  alt={course.title}
+                  className="w-full h-40 object-cover"
+                />
+                <div className="p-4">
+                  <h2 className="text-lg font-semibold mb-2">{course.title}</h2>
+                  <p className="text-sm text-gray-600 mb-4">
+                    {course.description}
                   </p>
-                  <p className="text-sm text-gray-500">
-                    Popularity: {course.popularity}
-                  </p>
+                  <div className="flex justify-between items-center">
+                    <p className="text-sm text-gray-500">
+                      {course.category} | {course.difficulty}
+                    </p>
+                    <p className="text-sm text-gray-500">
+                      Popularity: {course.popularity}
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

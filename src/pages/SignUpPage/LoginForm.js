@@ -111,20 +111,20 @@ const LoginForm = () => {
           </option>
         ))}
       </select>
-      <select
-        name="role"
-        value={formData.role}
-        onChange={handleChange}
-        required
-        className="soft-input"
-        disabled={!formData.organization}
-      >
-        {getRoleOptions().map((option) => (
-          <option key={option.value} value={option.value}>
-            {option.label}
-          </option>
-        ))}
-      </select>
+        <select
+          name="role"
+          value={formData.role}
+          onChange={handleChange}
+          required
+          className="soft-input"
+          disabled={!formData.organization}
+        >
+          {getRoleOptions().map((option) => (
+            <option key={option.value} value={option.value}>
+              {option.label}
+            </option>
+          ))}
+        </select>
 
       <div style={{ textAlign: "right", width: "100%" }}>
         <a href="#" className="forgot-password-link">
