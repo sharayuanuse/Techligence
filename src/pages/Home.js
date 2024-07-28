@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -6,6 +6,9 @@ import Homepage from "./Homepage";
 import "./Home.css";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { useSelector } from "react-redux";
+import { selectState } from "./Redux/ReduxSlices";
+import PopupComponent from "../utils/Popup/PopupComponent";
 const ArrowCircle = styled.div`
   color: white;
   font-size: 25px;
@@ -69,8 +72,24 @@ function Home() {
     ],
   };
 
+  const user = useSelector(selectState);    
+  const [showPopup, setShowPopup] = useState(false);
+  const prevUserIdRef = useRef(null);
+
+  useEffect(() => {
+    if (user && user._id !== prevUserIdRef.current) {
+      setShowPopup(true);
+      prevUserIdRef.current = user._id;
+      setTimeout(() => {
+        setShowPopup(false);
+      }, 4500);
+      // console .log(prevUserIdRef.current + "  " + user._id)
+    }
+    // },user._id);
+  },user);
   return (
     <Homepage>
+      {showPopup && <PopupComponent message={`You have successfully logged in as ${user.role}`} />}
       <div className="max-w-7xl mx-auto px-4 py-8">
         <Slider {...settings}>
           <div className="flex justify-center">

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Separator from "../Seperator/Seperator";
 import "./SignUpModel.css";
 import InstituteRoleSelection from "./RoleSelection/InstituteRoleSelection";
 import StudentSignup from "./InstituteForm/Student";
@@ -14,6 +13,7 @@ import CompanyRoleSelection from "./RoleSelection/CompanyRoleSelection";
 import LoginForm from "./LoginForm";
 import { useSelector } from "react-redux";
 import { selectState } from "../Redux/ReduxSlices";
+import Separator from "../../utils/Seperator/Seperator";
 
 const SignupModal = ({ isOpen, onClose }) => {
   const [activeIndex, setActiveIndex] = useState(0);
