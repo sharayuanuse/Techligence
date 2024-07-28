@@ -1,0 +1,180 @@
+body {
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
+}
+
+.otp-verification-container p {
+  text-align: center; 
+}
+
+.otp-verification-form .message-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.otp-verification-form .message-container p {
+  margin: 5px 0; /* Adjust margin if needed */
+}
+
+#resend-otp {
+  width: 100%;
+}
+
+#otp-inactive-button {
+  width: 100%;
+}
+
+.otp-verification-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.otp-verification-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+.otp-verification-form {
+  width: 450px;
+  height: 320px;
+  border-radius: 3mm;
+  border: 0.4mm solid rgb(28, 58, 64);
+  background: rgba(255, 255, 255, 0.9); 
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+.otp-close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+h3 {
+  font-size: 25px;
+  color: rgb(28, 58, 64);
+  font-weight: 500;
+  align-self: center;
+  margin-bottom: 15px;
+
+}
+
+.otp-inputs-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-bottom: 10px;
+}
+
+.otp-inputs-container input {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: black;
+  border: none;
+  outline: 0.4mm solid rgba(28, 58, 64, 0.7);
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  font-size: 18px;
+}
+
+.otp-inputs-container input:focus {
+  outline: 0.4mm solid black;
+}
+
+.otp-inputs-container input:valid {
+  color: black;
+  outline: 0.4mm solid black;
+}
+
+button {
+  color: white;
+  padding: 5px 0;
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  border-radius: 1mm;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+button.otp-inactive-button {
+  background: rgb(200, 200, 200);
+  cursor: not-allowed;
+}
+
+p {
+  color: black;
+}
+
+.status {
+  position: absolute;
+  width: 0;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgb(28, 58, 64);
+  border-radius: 2mm;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  overflow: hidden;
+  transition: 0.35s;
+}
+
+.status span {
+  font-size: 80px;
+  width: 80px;
+  color: rgb(249, 244, 60);
+}
+
+.success {
+  color: white;
+}
+
+/* Added styles for buttons container */
+.otp-buttons-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.enter-otp {
+  width: 48%;
+  background-color: rgb(28, 58, 64); /* Consistent with original color */
+}
+
+.resend-otp {
+  width: 48%;
+  background-color: rgb(28, 58, 64); /* Consistent with original color */
+}
+
+.otp-inactive-button {
+  background-color: rgb(200, 200, 200);
+  cursor: not-allowed;
+}
