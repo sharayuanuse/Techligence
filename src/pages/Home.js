@@ -88,7 +88,7 @@ function Home() {
     // },user._id);
   },user);
   return (
-    <Homepage>
+    <Homepage >
       {showPopup && <PopupComponent message={`You have successfully logged in as ${user.role}`} />}
       <div className="max-w-7xl mx-auto px-4 py-8">
         <Slider {...settings}>

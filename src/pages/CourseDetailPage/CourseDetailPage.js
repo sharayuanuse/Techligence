@@ -11,6 +11,7 @@ import "./AddCourseDetailModal.css";
 import FavoriteIcon from "./favorite-icon.svg";
 import DropDownIcon from "./DropDown-Icon.svg";
 import TickIcon from "./tick-icon.svg";
+import { Link } from "react-router-dom";
 
 const CourseDetailPage = () => {
   const [course, setCourse] = useState(null);
@@ -147,6 +148,8 @@ const CourseDetailPage = () => {
     }));
   };
 
+  const handleCourseEnroll = () => {};
+
   return (
     <>
       <Header />
@@ -179,11 +182,16 @@ const CourseDetailPage = () => {
                 {course.students_enrolled}
               </p>
             </div>
-            <div className="flex"> 
-              <button className="soft-button-course-details">
-                Enroll For the Course
-              </button>
-              <img src={FavoriteIcon} className="ml-5"/>
+            <div className="flex">
+              <Link to={"/VideoContentPage"}>
+                <button
+                  className="soft-button-course-details"
+                  onClick={handleCourseEnroll}
+                >
+                  Enroll For the Course
+                </button>
+              </Link>
+              <img src={FavoriteIcon} className="ml-5" />
             </div>
           </div>
         </div>
@@ -280,21 +288,21 @@ const CourseDetailPage = () => {
             </div>
           ))}
         </div>
-      {/* Creator Section */}
-      <div className="container mx-auto px-4 py-8">
-        <div className="bg-white shadow-md rounded-md p-4">
-          <h2 className="text-3xl font-bold mb-4">Course Creator</h2>
-          <div className="flex items-center mb-4">
-            <div>
-              <h3 className="text-2xl font-semibold">{creator.name}</h3>
-              <p className="text-gray-600">{creator.title}</p>
+        {/* Creator Section */}
+        <div className="container mx-auto px-4 py-8">
+          <div className="bg-white shadow-md rounded-md p-4">
+            <h2 className="text-3xl font-bold mb-4">Course Creator</h2>
+            <div className="flex items-center mb-4">
+              <div>
+                <h3 className="text-2xl font-semibold">{creator.name}</h3>
+                <p className="text-gray-600">{creator.title}</p>
+              </div>
             </div>
+            <p className="text-gray-700 mb-4">{creator.bio}</p>
           </div>
-          <p className="text-gray-700 mb-4">{creator.bio}</p>
         </div>
       </div>
-      </div>
-      <Footer/>
+      <Footer />
     </>
   );
 };

@@ -12,6 +12,7 @@ import ProtectedRoute from "./pages/ProtectedRoute";
 import { selectState } from "./pages/Redux/ReduxSlices";
 import { useSelector } from "react-redux";
 import CourseDetailPage from "./pages/CourseDetailPage/CourseDetailPage";
+import VideoContentPage from "./pages/VideoContentPage/VideoContentPage";
 
 function App() {
   // Simulate a logged-in user with admin role
@@ -23,6 +24,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/courseDetailPage" element={<CourseDetailPage />} />
+          <Route path="/VideoContentPage" element={<VideoContentPage />} />
           <Route path="/profile" element={
               <ProtectedRoute >
                 <Profile_Interface />

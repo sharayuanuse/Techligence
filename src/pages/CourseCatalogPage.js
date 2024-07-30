@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import addCoursesButton from "../add-courses-button.svg";
+import filterIcon from "../filter_button.svg"
 import Homepage from "./Homepage";
 import axios from "axios";
 import AddCourseModal from "./AddCourses/AddCoursesModal.js";
@@ -151,18 +152,18 @@ const CourseCatalogPage = () => {
   const [sortBy, setSortBy] = useState("");
   const [showFilters, setShowFilters] = useState(false);
 
+  const fetchCourses = async () => {
+    try {
+      const res = await axios.get(
+        "http://localhost:8000/api/institute/courses/teacher"
+      );
+      setCourses(res.data.courses);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   useEffect(() => {
     // Fetch courses from API or local storage
-    const fetchCourses = async () => {
-      try {
-        const res = await axios.get(
-          "http://localhost:8000/api/institute/courses/teacher"
-        );
-        setCourses(res.data.courses);
-      } catch (error) {
-        console.log(error);
-      }
-    };
     fetchCourses();
     console.log("courses fetched");
   }, []);
@@ -230,8 +231,9 @@ const CourseCatalogPage = () => {
                     display: "flex",
                     flexDirection: "row",
                     textWrap: "nowrap",
+                    color:"black"
                   }}
-                  className="px-10 py-2.5 mb-4 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500 shadow-md transition-all duration-200"
+                  className="ml-3 mr-3 px-10 py-2.5 mb-4 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500 shadow-md transition-all duration-200"
                   onClick={() => setIsAddCourseModalOpen(true)}
                 >
                   <img src={addCoursesButton} />
@@ -240,7 +242,7 @@ const CourseCatalogPage = () => {
               )}
               {/* Filter Button */}
               <button
-                className="px-10 py-2.5 mb-4 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500 shadow-md transition-all duration-200"
+                className="px-10 py-2.5 mb-4 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500 shadow-md transition-all duration-200 text-black"
                 onClick={() => setShowFilters(!showFilters)}
               >
                 Filter
@@ -331,6 +333,7 @@ const CourseCatalogPage = () => {
         isOpen={isAddCourseModalOpen}
         onClose={() => setIsAddCourseModalOpen(false)}
         handleAddCourse={handleAddCourse}
+        fetchCourses={fetchCourses}
       />
     </Homepage>
   );
