@@ -4,11 +4,9 @@ import ProfileIcon from "./avatar.png";
 import SignupModal from "../pages/SignUpPage/SignupModal";
 import { useSelector } from "react-redux";
 import { selectState } from "../pages/Redux/ReduxSlices";
-// import { useUser } from "../context/UserContext"; // Adjust the path as necessary
 
 const Header = () => {
-  // Use the context to get user
-  const user = useSelector(selectState)
+  const user = useSelector(selectState);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModal = () => setIsModalOpen(true);
@@ -37,6 +35,12 @@ const Header = () => {
               >
                 Community
               </Link>
+              <Link
+                to="/jobs"
+                className="text-white hover:text-gray-200 text-sm md:text-base"
+              >
+                Jobs
+              </Link>
               {user && user.role.toLowerCase() === "admin" && (
                 <Link
                   to="/admin/list"
@@ -46,7 +50,6 @@ const Header = () => {
                 </Link>
               )}
               <div className="flex items-center space-x-4">
-                {/* User Photo */}
                 <div
                   className="text-white hover:text-gray-200 cursor-pointer"
                   onClick={openModal}
@@ -57,8 +60,8 @@ const Header = () => {
                       src={ProfileIcon}
                       alt="User"
                       className="w-8 h-8 sm:w-10 sm:h-10 rounded-full"
-                      draggable='false'
-                      style={{userSelect:'none'}}
+                      draggable="false"
+                      style={{ userSelect: "none" }}
                     />
                   </div>
                 </div>

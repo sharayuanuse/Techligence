@@ -1,0 +1,83 @@
+.jobs-page-container {
+    background-color: #EAF3F9; /* Lightest Blue Shade */
+    min-height: 100vh; /* Ensure full page height */
+    padding: 2rem;
+  }
+
+.job-card {
+    display: flex;
+    flex-direction: column;
+    width: 300px; 
+    margin: 16px;
+    background-color: #f5f5f5; /* Light color for the card */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .job-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    border: 2px solid #3e67be ;
+  }
+  
+  .card-content {
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+  }
+  
+  .company-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  
+  .company-logo {
+    width: 50px; /* Adjust size as needed */
+    height: 50px; /* Adjust size as needed */
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 12px;
+  }
+  
+  .company-name {
+    font-size: 18px;
+    font-weight: 600;
+  }
+  
+  .job-title {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 8px 0;
+  }
+  
+  .job-details {
+    font-size: 14px;
+    color: #666;
+    margin: 8px 0;
+  }
+  
+  .posted-info {
+    font-size: 12px;
+    color: #999;
+    margin: 8px 0;
+  }
+  
+  .apply-button {
+    display: inline-block;
+    font-size: 14px;
+    color: #fff;
+    padding: 10px 20px;
+    background: linear-gradient(145deg, #47ced3, #3e67be);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .apply-button:hover {
+    background-color: #0056b3; 
+  }
+  
