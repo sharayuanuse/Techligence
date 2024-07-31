@@ -1,0 +1,34 @@
+.container {
+    max-width: 1200px;
+  }
+  
+  .video-player {
+    margin-bottom: 20px;
+  }
+  
+  .course-details {
+    margin-bottom: 20px;
+  }
+  
+  .lecture-list {
+    margin-bottom: 20px;
+  }
+  
+  .sidebar {
+    margin-top: 20px;
+  }
+  
+  .soft-button-course-details {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .soft-button-course-details:hover {
+    background-color: #0056b3;
+  }
+
+  

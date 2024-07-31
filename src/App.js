@@ -11,47 +11,44 @@ import { selectState } from "./pages/Redux/ReduxSlices";
 import { useSelector } from "react-redux";
 import CourseDetailPage from "./pages/CourseDetailPage/CourseDetailPage";
 import JobCatalogPage from "./pages/JobListing/JobCatalogPage"; 
+import VideoContentPage from "./pages/VideoContentPage/VideoContentPage";
+
 
 function App() {
   const user = useSelector(selectState);
 
   return (
     <>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/courseDetailPage" element={<CourseDetailPage />} />
-        <Route
-          path="/profile"
-          element={
-            <ProtectedRoute>
-              <Profile_Interface />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/courses"
-          element={
-            <ProtectedRoute>
-              <CourseCatalogPage />
-            </ProtectedRoute>
-          }
-        />
-        <Route path="/community" element={<Community />} />
-        <Route
-          path="/admin/list"
-          element={
-            <ProtectedRouteAdmin>
-              <AdminListPage />
-            </ProtectedRouteAdmin>
-          }
-        />
-        <Route
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/courseDetailPage" element={<CourseDetailPage />} />
+          <Route path="/VideoContentPage" element={<VideoContentPage />} />
+          <Route path="/profile" element={
+              <ProtectedRoute >
+                <Profile_Interface />
+              </ProtectedRoute>
+            } />
+          <Route path="/courses" element={
+              <ProtectedRoute>
+                <CourseCatalogPage />
+              </ProtectedRoute>
+            } />
+          <Route path="/community" element={<Community />} />
+          <Route
+            path="/admin/list"
+            element={
+              <ProtectedRouteAdmin>
+                <AdminListPage />
+              </ProtectedRouteAdmin>
+            }
+          />
+          <Route
           path="/jobs"
           element={
               <JobCatalogPage />
           }
         />
-      </Routes>
+        </Routes>
     </>
   );
 }
