@@ -1,0 +1,121 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  /* z-index: 1000;  */
+}
+
+.modal-content {
+  background: #fff;
+  border-radius: 8px;
+  /* padding: 20px; */
+  width: 100%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.multiline-content {
+  white-space: pre-line;
+}
+
+.close-button {
+  background: #ff6b6b;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.close-button:hover {
+  background: #ff3b3b;
+}
+
+.modal-body {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.modal-body img.company-logo {
+  width: 100px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.modal-body h2 {
+  margin-top: 10px;
+}
+
+.modal-body h3 {
+  margin-top: 10px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+}
+
+.modal-body p {
+  margin: 10px 0;
+}
+
+.modal-body .skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.modal-body .skills-list .skill-box {
+  background: #f0f0f0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 5px 10px;
+  font-size: 0.9rem;
+}
+
+.apply-form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.apply-form label {
+  margin-bottom: 10px;
+}
+
+.submit-button {
+  padding: 10px;
+  background: linear-gradient(145deg, #47ced3, #3e67be);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.submit-button:hover {
+  box-shadow: 5px 5px 10px #bbbbbb, -5px -1px 10px #878585ef;
+}
+
+.job-details-list {
+  list-style-type: disc; 
+  color: black;
+  margin-left: 20px;
+}
+
+.job-details-list ol {
+  list-style-type: decimal;
+}

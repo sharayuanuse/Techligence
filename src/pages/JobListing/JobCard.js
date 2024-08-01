@@ -1,20 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import dayjs from 'dayjs';
 import './JobCard.css';
-import JobDetailsModal from './JobDetailsModal';
 
 function JobCard(props) {
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const date1 = dayjs(Date.now());
   const diffInDays = date1.diff(props.postedOn, 'day');
-
-  const handleApplyClick = () => {
-    setIsModalOpen(true);
-  };
-
-  // const handleCloseModal = () => {
-  //   setIsModalOpen(false);
-  // };
 
   return (
     <div className='job-card'>
@@ -30,21 +20,16 @@ function JobCard(props) {
         <p className='posted-info'>
           Posted {diffInDays > 1 ? `${diffInDays} days` : `${diffInDays} day`} ago
         </p>
-        <button className='apply-button' onClick={handleApplyClick}>
+        <button className='apply-button' onClick={props.onApply}>
           Apply
         </button>
       </div>
-      {/* {isModalOpen && (
-        <JobDetailsModal
-          job={props}
-          onClose={handleCloseModal}
-        />
-      )} */}
     </div>
   );
 }
 
 export default JobCard;
+
 
 
 // import React from 'react';
