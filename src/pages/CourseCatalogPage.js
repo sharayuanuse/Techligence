@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import addCoursesButton from "../add-courses-button.svg";
-import filterIcon from "../filter_button.svg"
 import Homepage from "./Homepage";
 import axios from "axios";
 import AddCourseModal from "./AddCourses/AddCoursesModal.js";
@@ -8,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectState } from "./Redux/ReduxSlices.js";
 import { Link } from "react-router-dom";
 import { selectCourseId, setCourseId } from "./Redux/CourseSlice.js";
-
+  
 // Dummy course data
 const dummyCourses = [
   {
