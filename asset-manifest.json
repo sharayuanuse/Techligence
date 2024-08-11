@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/Techligence/static/css/main.c16046e7.css",
+    "main.js": "/Techligence/static/js/main.d33711ee.js",
+    "static/media/slick.svg": "/Techligence/static/media/slick.2630a3e3eab21c607e21.svg",
+    "static/media/slick.eot": "/Techligence/static/media/slick.a4e97f5a2a64f0ab1323.eot",
+    "static/media/slick.ttf": "/Techligence/static/media/slick.c94f7671dcc99dce43e2.ttf",
+    "static/media/slick.woff": "/Techligence/static/media/slick.295183786cd8a1389865.woff",
+    "index.html": "/Techligence/index.html",
+    "static/media/calendar.svg": "/Techligence/static/media/calendar.197de529acda0a6c90bf44ed05a677bb.svg",
+    "static/media/favorite-icon.svg": "/Techligence/static/media/favorite-icon.6f877a0f9036c1738096d1d3aa60b12e.svg",
+    "static/media/add-courses-button.svg": "/Techligence/static/media/add-courses-button.3c5028aa7146e47ce92ffa68321be425.svg",
+    "static/media/notifications-icon.svg": "/Techligence/static/media/notifications-icon.b2bbbc0238a1adce03bff5dc4a744f4d.svg",
+    "static/media/tick-icon.svg": "/Techligence/static/media/tick-icon.0b29c1bf1d6d3d4f7263ece6837dd7b5.svg",
+    "static/media/back-button.svg": "/Techligence/static/media/back-button.9d3aa52c9b5c9cdecc09a7f9d771674b.svg",
+    "static/media/DropDown-Icon.svg": "/Techligence/static/media/DropDown-Icon.0940d7c0d874fa0e7364127357d2dec0.svg",
+    "main.c16046e7.css.map": "/Techligence/static/css/main.c16046e7.css.map",
+    "main.d33711ee.js.map": "/Techligence/static/js/main.d33711ee.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c16046e7.css",
+    "static/js/main.d33711ee.js"
+  ]
+}
